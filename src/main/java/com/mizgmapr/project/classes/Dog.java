@@ -1,8 +1,8 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.classes;
 
 import java.io.File;
 
-public class Dog implements Pet {
+public class Dog extends Pet {
     String name;
     private String owner_data;
     private File treatment_records;

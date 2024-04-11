@@ -1,4 +1,4 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.classes;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

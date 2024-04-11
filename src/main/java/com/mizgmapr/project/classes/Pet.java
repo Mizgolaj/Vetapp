@@ -1,13 +1,13 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.classes;
 
 import java.io.File;
 
-public interface Pet {
-    String name = "";
-    String owner_data = "";
-    File treatment_records = null;
-    String race = "";
-    double weight = 0;
-    boolean aggressive = false;
+public abstract class Pet {
+    String name;
+    private String owner_data;
+    private File treatment_records;
+    String race;
+    private double weight;
+    boolean aggressive;
 
 }
