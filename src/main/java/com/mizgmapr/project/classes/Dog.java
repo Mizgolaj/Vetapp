@@ -1,17 +1,43 @@
 package com.mizgmapr.project.classes;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.io.File;
 
+@EqualsAndHashCode
+@ToString
+@Entity
+@Table(name = "Dog")
 public class Dog {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "forAllergySufferers")
     boolean forAllergySufferers;
+    @Column(name = "aggressive")
     boolean aggressive;
+    @Column(name = "undercoat")
     boolean undercoat;
+    @Column(name = "typeOfHair")
     String typeOfHair;
+    @Column(name = "color")
     String color;
+    @Column(name = "name")
     String name;
+    @Column(name = "race")
     String race;
+    @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "ownerData")
     private String ownerData;
+    @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "treatmentRecords")
     private File treatmentRecords;
+    @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "weight")
     private double weight;
 
 

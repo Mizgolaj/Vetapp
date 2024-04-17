@@ -3,7 +3,7 @@ package com.mizgmapr.project.classes;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.List;
+import java.io.File;
 
 @EqualsAndHashCode
 @ToString
@@ -11,7 +11,7 @@ import java.util.List;
 @Table(name = "Owner")
 public class Owner {
     @Column(name = "OwnedPets")
-    List<Object> ownedPets;
+    File listOfOwnedPets;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -19,19 +19,21 @@ public class Owner {
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "Address")
     private String address;
+
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "Name")
     private String name;
+
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "Surname")
     private String surname;
 
-    public Owner(String name, String surname, List<Object> ownedPets, String address) {
+    public Owner(String name, String surname, File listOfOwnedPets, String address) {
         this.name = name;
         this.surname = surname;
-        this.ownedPets = ownedPets;
+        this.listOfOwnedPets = listOfOwnedPets;
         this.address = address;
     }
 }
