@@ -6,6 +6,12 @@ public class Rodent extends Pet {
 
     String typeOfRodent;
     String color;
+    String name;
+    private String ownerData;
+    private File treatmentRecords;
+    String race;
+    private double weight;
+    boolean aggressive;
 
 
     public Rodent(String name, String owner_data, String race, double weight, boolean aggressive, String typeOfRodent, String color) {

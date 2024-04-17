@@ -1,11 +1,15 @@
 package com.mizgmapr.project.classes;
 
-public class Vet extends Client{
+public class Vet {
     String clinicName;
     double rating;
+    private String name;
+    private String surname;
     private String authorizationNumber;
+
     public Vet(String name, String surname, String clinicName, double rating, String authorizationNumber) {
-        super(name, surname);
+        this.name = name;
+        this.surname = surname;
         this.clinicName = clinicName;
         this.rating = rating;
         this.authorizationNumber = authorizationNumber;
@@ -17,5 +21,21 @@ public class Vet extends Client{
 
     public void setAuthorizationNumber(String authorizationNumber) {
         this.authorizationNumber = authorizationNumber;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSurname() {
+        return surname;
+    }
+
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 }
