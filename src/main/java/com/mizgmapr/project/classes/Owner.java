@@ -1,17 +1,20 @@
 package com.mizgmapr.project.classes;
 
 import lombok.*;
+import java.util.Set;
 
 import javax.persistence.*;
-import java.io.File;
+
 
 @EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "Owner")
 public class Owner {
+
     @Column(name = "OwnedPets")
-    File listOfOwnedPets;
+    @ElementCollection(targetClass=String.class)
+    Set<String> listOfOwnedPets;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -30,7 +33,7 @@ public class Owner {
     @Column(name = "Surname")
     private String surname;
 
-    public Owner(String name, String surname, File listOfOwnedPets, String address) {
+    public Owner(String name, String surname, Set<String> listOfOwnedPets, String address) {
         this.name = name;
         this.surname = surname;
         this.listOfOwnedPets = listOfOwnedPets;

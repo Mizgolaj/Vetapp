@@ -1,19 +1,16 @@
 package com.mizgmapr.project.classes;
 
 import lombok.*;
+import java.util.Set;
 
 import javax.persistence.*;
-import java.io.File;
 
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "VeterynaryClinic")
+@Table(name = "VeterinaryClinic")
+public class VeterinaryClinic {
 
-public class VeterinaryClinic{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @Column(name = "name")
     String name;
     @Column(name = "address")
@@ -26,15 +23,20 @@ public class VeterinaryClinic{
     String closeHour;
     @Column(name = "rating")
     double rating;
+    @Column(name = "acceptedPets")
+    @ElementCollection(targetClass=String.class)
+    Set<String> acceptedPets;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "petsOwners")
-    private File petsOwners;
-    @Column(name = "acceptedPets")
-    File acceptedPets;
+    @ElementCollection(targetClass=String.class)
+    private Set<String> petsOwners;
     private int ratingCounter;
 
-    public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, File acceptedPets) {
+    public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;
         this.address = address;
         this.website = website;
@@ -47,10 +49,9 @@ public class VeterinaryClinic{
     public void ratingCalculator(double grade) {
         if (rating == 0) {
             rating = grade;
-            ratingCounter++;
         } else {
             rating = ((rating * ratingCounter) + grade) / (ratingCounter + 1);
-            ratingCounter++;
         }
+        ratingCounter++;
     }
 }

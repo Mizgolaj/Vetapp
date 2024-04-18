@@ -5,19 +5,22 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Table;
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "Vet")
 public class Vet {
+
+    int ratingCounter;
     @Column(name = "ClinicName")
     String clinicName;
     @Column(name = "Rating")
     double rating;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Getter
     @Setter
     @Column(name = "Name")
@@ -37,5 +40,14 @@ public class Vet {
         this.clinicName = clinicName;
         this.rating = rating;
         this.authorizationNumber = authorizationNumber;
+    }
+
+    public void ratingCalculator(double grade) {
+        if (rating == 0) {
+            rating = grade;
+        } else {
+            rating = ((rating * ratingCounter) + grade) / (ratingCounter + 1);
+        }
+        ratingCounter++;
     }
 }

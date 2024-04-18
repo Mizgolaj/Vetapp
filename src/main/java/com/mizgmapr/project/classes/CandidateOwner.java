@@ -11,6 +11,8 @@ import javax.persistence.*;
 public class CandidateOwner {
 
     int ratingCounter = 0;
+    @Column(name = "Grade")
+    double rating;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -26,8 +28,6 @@ public class CandidateOwner {
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "Address")
     private String address;
-    @Column(name = "Grade")
-    double rating;
 
     public CandidateOwner(String name, String surname, String address, double rating) {
         this.name = name;
@@ -39,10 +39,9 @@ public class CandidateOwner {
     public void ratingCalculator(double grade) {
         if (rating == 0) {
             rating = grade;
-            ratingCounter++;
         } else {
             rating = ((rating * ratingCounter) + grade) / (ratingCounter + 1);
-            ratingCounter++;
         }
+        ratingCounter++;
     }
 }

@@ -11,15 +11,19 @@ import java.io.File;
 @Table(name = "Rodent")
 public class Rodent {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @Column(name = "typeOfRodent")
     String typeOfRodent;
     @Column(name = "color")
     String color;
     @Column(name = "name")
     String name;
+    @Column(name = "race")
+    String race;
+    @Column(name = "aggressive")
+    boolean aggressive;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "ownerData")
@@ -28,14 +32,10 @@ public class Rodent {
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "treatmentRecords")
     private File treatmentRecords;
-    @Column(name = "race")
-    String race;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "weight")
     private double weight;
-    @Column(name = "aggressive")
-    boolean aggressive;
 
     public Rodent(String typeOfRodent, String color, String name, String ownerData, String race, double weight, boolean aggressive) {
         this.typeOfRodent = typeOfRodent;

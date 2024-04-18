@@ -2,23 +2,24 @@ package com.mizgmapr.project.classes;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
-
+import java.util.Set;
 import javax.persistence.*;
-import java.io.File;
+
 @EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "CateringPlace")
-public class CateringPlace{
+public class CateringPlace {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+    private int ratingCounter;
     @Column(name = "name")
     String name;
     @Column(name = "address")
     String address;
     @Column(name = "website")
-
     String website;
     @Column(name = "openHour")
     String openHour;
@@ -27,10 +28,10 @@ public class CateringPlace{
     @Column(name = "rating")
     double rating;
     @Column(name = "acceptedPets")
-    File acceptedPets;
-    private int ratingCounter;
+    @ElementCollection(targetClass=String.class)
+    Set<String> acceptedPets;
 
-    public CateringPlace(String name, String address, String website, String openHour, String closeHour, double rating, File acceptedPets) {
+    public CateringPlace(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;
         this.address = address;
         this.website = website;
@@ -43,10 +44,9 @@ public class CateringPlace{
     public void ratingCalculator(double grade) {
         if (rating == 0) {
             rating = grade;
-            ratingCounter++;
         } else {
             rating = ((rating * ratingCounter) + grade) / (ratingCounter + 1);
-            ratingCounter++;
         }
+        ratingCounter++;
     }
 }

@@ -10,9 +10,6 @@ import java.io.File;
 @Entity
 @Table(name = "Dog")
 public class Dog {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
     @Column(name = "forAllergySufferers")
     boolean forAllergySufferers;
     @Column(name = "aggressive")
@@ -27,6 +24,9 @@ public class Dog {
     String name;
     @Column(name = "race")
     String race;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "ownerData")

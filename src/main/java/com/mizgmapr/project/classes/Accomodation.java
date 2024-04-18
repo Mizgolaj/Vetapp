@@ -4,16 +4,14 @@ import lombok.EqualsAndHashCode;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.io.File;
+import java.util.Set;
 
 @EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "Accomodation")
-public class Accomodation{
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+public class Accomodation {
+
     @Column(name = "name")
     String name;
     @Column(name = "address")
@@ -27,12 +25,16 @@ public class Accomodation{
     @Column(name = "rating")
     double rating;
     @Column(name = "acceptedPets")
-    File acceptedPets;
+    @ElementCollection(targetClass=String.class)
+    Set<String> acceptedPets;
     @Column(name = "additionalFees")
     boolean additionalFees;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
     private int ratingCounter;
 
-    public Accomodation(String name, String address, String website, String openHour, String closeHour, File acceptedPets, boolean additionalFees) {
+    public Accomodation(String name, String address, String website, String openHour, String closeHour, Set<String> acceptedPets, boolean additionalFees) {
         this.name = name;
         this.address = address;
         this.website = website;
@@ -45,10 +47,9 @@ public class Accomodation{
     public void ratingCalculator(double grade) {
         if (rating == 0) {
             rating = grade;
-            ratingCounter++;
         } else {
             rating = ((rating * ratingCounter) + grade) / (ratingCounter + 1);
-            ratingCounter++;
         }
+        ratingCounter++;
     }
 }
