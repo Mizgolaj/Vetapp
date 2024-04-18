@@ -1,21 +1,42 @@
 package com.mizgmapr.project.classes;
 
-import lombok.Getter;
+import lombok.*;
 
+import javax.persistence.*;
 import java.io.File;
 
+@EqualsAndHashCode
+@ToString
+@Entity
+@Table(name = "Cat")
 public class Cat {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
+    @Column(name = "hypoallergenic")
     boolean hypoallergenic;
+    @Column(name = "aggressive")
     boolean aggressive;
+    @Column(name = "fur")
     boolean fur;
+    @Column(name = "color")
     String color;
+    @Column(name = "name")
     String name;
+    @Column(name = "race")
     String race;
+
     @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "ownerData")
     private String ownerData;
     @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "treatmentRecords")
     private File treatmentRecords;
     @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "weight")
     private double weight;
 
     public Cat(String name, String owner_data, String race, double weight, boolean aggressive, String color, boolean fur, boolean hypoallergenic) {
@@ -29,15 +50,4 @@ public class Cat {
         this.hypoallergenic = hypoallergenic;
     }
 
-    public void setOwnerData(String ownerData) {
-        this.ownerData = ownerData;
-    }
-
-    public void setTreatmentRecords(File treatmentRecords) {
-        this.treatmentRecords = treatmentRecords;
-    }
-
-    public void setWeight(double weight) {
-        this.weight = weight;
-    }
 }
