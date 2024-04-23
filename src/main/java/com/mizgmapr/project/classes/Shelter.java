@@ -2,6 +2,8 @@ package com.mizgmapr.project.classes;
 
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -30,6 +32,18 @@ public class Shelter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @OneToMany
+    private List<Dog> dogs;
+
+    @OneToMany
+    private List<Cat> cats;
+
+    @OneToMany
+    private List<Other> others;
+
+    @OneToMany
+    private List<Rodent> rodents;
 
     public Shelter(String name, String address, String website, String openHour, String closeHour, boolean walksAvaliable) {
         this.name = name;

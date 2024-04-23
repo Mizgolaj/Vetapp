@@ -1,6 +1,8 @@
 package com.mizgmapr.project.classes;
 
 import lombok.*;
+
+import java.util.List;
 import java.util.Set;
 
 import javax.persistence.*;
@@ -35,6 +37,9 @@ public class VeterinaryClinic {
     @ElementCollection(targetClass=String.class)
     private Set<String> petsOwners;
     private int ratingCounter;
+
+    @ManyToMany
+    private List<Vet> vets;
 
     public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;

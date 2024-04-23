@@ -21,13 +21,10 @@ public class Rodent {
     String race;
     @Column(name = "aggressive")
     boolean aggressive;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Getter
-    @Setter(AccessLevel.PROTECTED)
-    @Column(name = "ownerData")
-    private String ownerData;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "treatmentRecords")
@@ -37,13 +34,12 @@ public class Rodent {
     @Column(name = "weight")
     private double weight;
 
-    public Rodent(String typeOfRodent, String color, String name, String ownerData, String race, double weight, boolean aggressive) {
-        this.typeOfRodent = typeOfRodent;
-        this.color = color;
+    public Rodent(String name, String race, double weight, boolean aggressive, String color, String typeOfRodent) {
         this.name = name;
-        this.ownerData = ownerData;
         this.race = race;
         this.weight = weight;
         this.aggressive = aggressive;
+        this.color = color;
+        this.typeOfRodent = typeOfRodent;
     }
 }

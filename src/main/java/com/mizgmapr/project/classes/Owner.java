@@ -1,9 +1,10 @@
 package com.mizgmapr.project.classes;
 
 import lombok.*;
-import java.util.Set;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 
 @EqualsAndHashCode
@@ -13,7 +14,7 @@ import javax.persistence.*;
 public class Owner {
 
     @Column(name = "OwnedPets")
-    @ElementCollection(targetClass=String.class)
+    @ElementCollection(targetClass = String.class)
     Set<String> listOfOwnedPets;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -33,10 +34,22 @@ public class Owner {
     @Column(name = "Surname")
     private String surname;
 
-    public Owner(String name, String surname, Set<String> listOfOwnedPets, String address) {
+    @OneToMany
+    private List<Dog> dogs;
+
+    @OneToMany
+    private List<Cat> cats;
+
+    @OneToMany
+    private List<Other> others;
+
+    @OneToMany
+    private List<Rodent> rodents;
+
+    public Owner(String name, String surname, String address, Set<String> listOfOwnedPets) {
         this.name = name;
         this.surname = surname;
-        this.listOfOwnedPets = listOfOwnedPets;
         this.address = address;
+        this.listOfOwnedPets = listOfOwnedPets;
     }
 }

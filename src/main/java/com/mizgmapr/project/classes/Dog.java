@@ -10,6 +10,7 @@ import java.io.File;
 @Entity
 @Table(name = "Dog")
 public class Dog {
+
     @Column(name = "forAllergySufferers")
     boolean forAllergySufferers;
     @Column(name = "aggressive")
@@ -24,13 +25,10 @@ public class Dog {
     String name;
     @Column(name = "race")
     String race;
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    @Getter
-    @Setter(AccessLevel.PROTECTED)
-    @Column(name = "ownerData")
-    private String ownerData;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "treatmentRecords")
@@ -40,16 +38,14 @@ public class Dog {
     @Column(name = "weight")
     private double weight;
 
-
-    public Dog(String name, String owner_data, String race, double weight, boolean aggressive, boolean forAllergySufferers, String typeOfHair, boolean undercoat, String color) {
+    public Dog(String name, String race, double weight, boolean aggressive, String color, String typeOfHair, boolean forAllergySufferers, boolean undercoat) {
         this.name = name;
-        this.ownerData = owner_data;
         this.race = race;
         this.weight = weight;
         this.aggressive = aggressive;
-        this.forAllergySufferers = forAllergySufferers;
-        this.typeOfHair = typeOfHair;
-        this.undercoat = undercoat;
         this.color = color;
+        this.typeOfHair = typeOfHair;
+        this.forAllergySufferers = forAllergySufferers;
+        this.undercoat = undercoat;
     }
 }

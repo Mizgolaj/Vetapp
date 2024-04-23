@@ -34,13 +34,14 @@ public class Accomodation {
     private int id;
     private int ratingCounter;
 
-    public Accomodation(String name, String address, String website, String openHour, String closeHour, Set<String> acceptedPets, boolean additionalFees) {
+    public Accomodation(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets, boolean additionalFees) {
         this.name = name;
         this.address = address;
         this.website = website;
         this.openHour = openHour;
         this.closeHour = closeHour;
         this.acceptedPets = acceptedPets;
+        this.rating = rating;
         this.additionalFees = additionalFees;
     }
 

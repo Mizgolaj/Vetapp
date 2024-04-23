@@ -3,6 +3,7 @@ package com.mizgmapr.project.classes;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @ToString
 @EqualsAndHashCode
@@ -28,6 +29,18 @@ public class CandidateOwner {
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "Address")
     private String address;
+
+    @OneToMany
+    private List<Dog> dogs;
+
+    @OneToMany
+    private List<Cat> cats;
+
+    @OneToMany
+    private List<Other> others;
+
+    @OneToMany
+    private List<Rodent> rodents;
 
     public CandidateOwner(String name, String surname, String address, double rating) {
         this.name = name;

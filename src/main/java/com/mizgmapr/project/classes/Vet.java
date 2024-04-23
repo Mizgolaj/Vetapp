@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @EqualsAndHashCode
 @ToString
@@ -34,11 +35,23 @@ public class Vet {
     @Column(name = "AuthorizationNumber")
     private String authorizationNumber;
 
-    public Vet(String name, String surname, String clinicName, double rating, String authorizationNumber) {
+    @ManyToMany
+    private List<Dog> dogs;
+
+    @ManyToMany
+    private List<Cat> cats;
+
+    @ManyToMany
+    private List<Other> others;
+
+    @ManyToMany
+    private List<Rodent> rodents;
+
+    public Vet(String name, String surname, double rating, String clinicName, String authorizationNumber) {
         this.name = name;
         this.surname = surname;
-        this.clinicName = clinicName;
         this.rating = rating;
+        this.clinicName = clinicName;
         this.authorizationNumber = authorizationNumber;
     }
 
