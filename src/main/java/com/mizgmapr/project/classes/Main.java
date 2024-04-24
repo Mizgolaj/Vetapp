@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -18,20 +19,7 @@ public class Main {
         SpringApplication.run(Main.class, args);
         System.out.println("Hello");
 
-        line("Candidate Owner = Starting test");
-        CandidateOwner Maciej = new CandidateOwner("Maciej", "Kowalski", "ccc", 0.0);
-        Maciej.ratingCalculator(2);
-        System.out.println(Maciej);
-        Maciej.ratingCalculator(4);
-        Maciej.ratingCalculator(5);
-        Maciej.ratingCalculator(5);
-        System.out.println(Maciej);
-        Maciej.ratingCalculator(5);
-        System.out.println(Maciej.rating);
-        System.out.println(Maciej.hashCode());
-        line("Candidate Owner = Testing over");
-
-        line("DataBase test - Creation");
+        line("DataBase - Creation");
         try (SessionFactory sessionFactory = new Configuration()
                 .addAnnotatedClass(Owner.class)
                 .addAnnotatedClass(CandidateOwner.class)
@@ -62,24 +50,84 @@ public class Main {
 
             line("Creation of Classess - Cat.class");
 
-            Cat firstCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat secondCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat thirdCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat fourthCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat fifthCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat sixthCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat seventhCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat eigthCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat ninthCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
-            Cat tenthCat = new Cat("Kicia", "Persian", 15.7, true, "Grey-Blue", true, false);
+            Cat firstCat = new Cat("Kicia", "Persian", 5.7, true, "Grey-Blue", true, false);
+            Cat secondCat = new Cat("Felek", "British Shorthair", 5.7, false, "Grey", true, false);
+            Cat thirdCat = new Cat("Koteł", "Cornish Rex", 4.3, false, "Black-White", true, false);
+            Cat fourthCat = new Cat("Karmazyn", "Norwegian Forest Cat", 8.2, true, "White-Orange", true, false);
+            Cat fifthCat = new Cat("Książe", "Sphynx", 3.9, false, "Skin color", false, false);
+            Cat sixthCat = new Cat("Mopik", "American Shorthair", 3.9, true, "Grey-Black", true, false);
+            Cat seventhCat = new Cat("Nela", "Persian", 12.3, true, "Golden", true, false);
+            Cat eigthCat = new Cat("Norman", "British Shorthair", 4.0, false, "Ginger", true, false);
+            Cat ninthCat = new Cat("Rompar", "Devon Rex", 3.1, true, "Black", true, false);
+            Cat tenthCat = new Cat("Stacy", "Cornish Rex", 3.9, true, "White", true, false);
 
             line("Cats created");
 
-            Rodent randomRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
-            Other randomOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            line("Creation of Classess - Rodent.class");
+
+            Rodent firstRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent secondRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent thirdRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent fourthRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent fifthRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent sixthRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent seventhRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent eigthRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent ninthRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+            Rodent tenthRodent = new Rodent("Alfred", "Rex", 0.7, false, "Grey", "Rat");
+
+            line("Rodents created");
+
+            line("Creation of Classess - Other.class");
+
+            Other firstOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other secondOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other thirdOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other fourthOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other fifthOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other sixthOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other seventhOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other eigthOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other ninthOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+            Other tenthOther = new Other("Wacław", "Lizard", 0.4, true, "Gecko");
+
+            line("Others created");
+
+            line("Creation of Classess - CandidateOwner.class");
+
+            CandidateOwner firstCandidateOwner = new CandidateOwner("Maciej", "Kowalski", "ul. Nieziemska 5", 0.0);
+            firstCandidateOwner.ratingCalculator(2);firstCandidateOwner.ratingCalculator(4);
+            firstCandidateOwner.ratingCalculator(5);firstCandidateOwner.ratingCalculator(5);
+            firstCandidateOwner.setDogs(List.of(firstDog,ninthDog));
+
+            CandidateOwner secondCandidateOwner = new CandidateOwner("Kornelia", "Równomierna", "ul. Zawady 23/3", 0.0);
+            secondCandidateOwner.ratingCalculator(3);secondCandidateOwner.ratingCalculator(1);
+            secondCandidateOwner.ratingCalculator(6);secondCandidateOwner.ratingCalculator(6);
+            secondCandidateOwner.setCats(List.of(fourthCat,seventhCat,tenthCat));
+
+            CandidateOwner thirdCandidateOwner = new CandidateOwner("Zdzisław", "Sobieracki", "ul. Wodna 3", 0.0);
+            thirdCandidateOwner.ratingCalculator(2);thirdCandidateOwner.ratingCalculator(2);
+            thirdCandidateOwner.ratingCalculator(1);thirdCandidateOwner.ratingCalculator(5);
+            thirdCandidateOwner.setRodents(List.of(firstRodent, sixthRodent));
+
+            line("Candidate Owners created");
+
+            line("Creation of Classess - Owner.class");
+
+            Owner firstOwner = new Owner("Dariusz", "Mazowiecki", "ul. Piłsudskiego 5");
+            firstOwner.setDogs(List.of(secondDog));
+            firstOwner.setCats(List.of(thirdCat));
+
+            Owner secondOwner = new Owner("Miron", "Wielkoduszny", "ul. Polna 36");
+            secondOwner.setRodents(List.of(secondRodent, ninthRodent));
+            secondOwner.setOthers(List.of(firstOther, sixthOther));
+
+            Owner thirdOwner = new Owner("Kamila", "Pardonowa", "ul. Kijanki 23/4");
+            thirdCandidateOwner.setCats(List.of(firstCat, secondCat));
+
+            line("Owners created");
 
             Shelter randomShelter = new Shelter("Shelter", "ul.Akacjowa 4", "www.shelter.com", "07:00", "15:00", true);
-            Owner randomOwner = new Owner("Dariusz", "Mazowiecki", "ul. Piłsudskiego 5", Set.of("Reksio", "Kicia", "Wacław", "Alfred"));
             Accomodation accomodation = new Accomodation("random accomodation", "Akacjowa 5", "www.randomAccomodation.com", "7", "15", 0.0, Set.of("Dog", "Cat"), true);
 
             try (Session session = sessionFactory.openSession()) {
@@ -91,15 +139,22 @@ public class Main {
                 session.save(firstCat);session.save(secondCat);session.save(thirdCat);session.save(fourthCat);session.save(fifthCat);
                 session.save(sixthCat);session.save(seventhCat);session.save(eigthCat);session.save(ninthCat);session.save(tenthCat);
 
-                session.save(randomOwner);
-                session.save(Maciej);
-                session.save(randomRodent);
-                session.save(randomOther);
+                session.save(firstRodent);session.save(secondRodent);session.save(thirdRodent);session.save(fourthRodent);session.save(fifthRodent);
+                session.save(sixthRodent);session.save(seventhRodent);session.save(eigthRodent);session.save(ninthRodent);session.save(tenthRodent);
+
+                session.save(firstOther);session.save(secondOther);session.save(thirdOther);session.save(fourthOther);session.save(fifthOther);
+                session.save(sixthOther);session.save(seventhOther);session.save(eigthOther);session.save(ninthOther);session.save(tenthOther);
+
+                session.save(firstCandidateOwner);session.save(secondCandidateOwner);session.save(thirdCandidateOwner);
+
+                session.save(firstOwner);session.save(secondOwner);session.save(thirdOwner);
+
                 session.save(randomShelter);
                 session.save(accomodation);
+
                 session.getTransaction().commit();
             }
-            line("DataBase Test over");
+            line("DataBase creation over");
         }
     }
 

@@ -13,9 +13,6 @@ import java.util.Set;
 @Table(name = "Owner")
 public class Owner {
 
-    @Column(name = "OwnedPets")
-    @ElementCollection(targetClass = String.class)
-    Set<String> listOfOwnedPets;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -35,21 +32,28 @@ public class Owner {
     private String surname;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Dog> dogs;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Cat> cats;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Other> others;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Rodent> rodents;
 
-    public Owner(String name, String surname, String address, Set<String> listOfOwnedPets) {
+    public Owner(String name, String surname, String address) {
         this.name = name;
         this.surname = surname;
         this.address = address;
-        this.listOfOwnedPets = listOfOwnedPets;
     }
 }

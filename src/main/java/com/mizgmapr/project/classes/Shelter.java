@@ -1,6 +1,8 @@
 package com.mizgmapr.project.classes;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 
 import java.util.List;
@@ -34,15 +36,23 @@ public class Shelter {
     private int id;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Dog> dogs;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Cat> cats;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Other> others;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Rodent> rodents;
 
     public Shelter(String name, String address, String website, String openHour, String closeHour, boolean walksAvaliable) {

@@ -39,6 +39,8 @@ public class VeterinaryClinic {
     private int ratingCounter;
 
     @ManyToMany
+    @Getter
+    @Setter
     private List<Vet> vets;
 
     public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {

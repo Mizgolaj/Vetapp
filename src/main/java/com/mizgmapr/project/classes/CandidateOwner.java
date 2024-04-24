@@ -31,15 +31,23 @@ public class CandidateOwner {
     private String address;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Dog> dogs;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Cat> cats;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Other> others;
 
     @OneToMany
+    @Getter
+    @Setter
     private List<Rodent> rodents;
 
     public CandidateOwner(String name, String surname, String address, double rating) {

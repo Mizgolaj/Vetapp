@@ -36,15 +36,23 @@ public class Vet {
     private String authorizationNumber;
 
     @ManyToMany
+    @Getter
+    @Setter
     private List<Dog> dogs;
 
     @ManyToMany
+    @Getter
+    @Setter
     private List<Cat> cats;
 
     @ManyToMany
+    @Getter
+    @Setter
     private List<Other> others;
 
     @ManyToMany
+    @Getter
+    @Setter
     private List<Rodent> rodents;
 
     public Vet(String name, String surname, double rating, String clinicName, String authorizationNumber) {
