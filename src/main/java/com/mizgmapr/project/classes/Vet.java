@@ -15,8 +15,6 @@ import java.util.List;
 public class Vet {
 
     int ratingCounter;
-    @Column(name = "ClinicName")
-    String clinicName;
     @Column(name = "Rating")
     double rating;
     @Id
@@ -55,11 +53,10 @@ public class Vet {
     @Setter
     private List<Rodent> rodents;
 
-    public Vet(String name, String surname, double rating, String clinicName, String authorizationNumber) {
+    public Vet(String name, String surname, double rating, String authorizationNumber) {
         this.name = name;
         this.surname = surname;
         this.rating = rating;
-        this.clinicName = clinicName;
         this.authorizationNumber = authorizationNumber;
     }
 
