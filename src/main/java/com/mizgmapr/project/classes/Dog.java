@@ -4,6 +4,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 @EqualsAndHashCode
 @ToString
@@ -37,6 +39,18 @@ public class Dog {
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "weight")
     private double weight;
+
+    @ManyToMany(mappedBy = "dogs")
+    private List<Dog> dogs = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "cats")
+    private List<Cat> cats = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "rodents")
+    private List<Rodent> rodents = new ArrayList<>();
+
+    @ManyToMany(mappedBy = "others")
+    private List<Other> others = new ArrayList<>();
 
     public Dog(String name, String race, double weight, boolean aggressive, String color, String typeOfHair, boolean forAllergySufferers, boolean undercoat) {
         this.name = name;

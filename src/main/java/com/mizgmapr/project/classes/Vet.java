@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @EqualsAndHashCode
@@ -34,24 +35,43 @@ public class Vet {
     private String authorizationNumber;
 
     @ManyToMany
+    @JoinTable(
+            name = "Dog",
+            joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "id")})
     @Getter
     @Setter
     private List<Dog> dogs;
 
     @ManyToMany
+    @JoinTable(
+            name = "Cat",
+            joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "id")})
     @Getter
     @Setter
     private List<Cat> cats;
 
     @ManyToMany
+    @JoinTable(
+            name = "Other",
+            joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "id")})
     @Getter
     @Setter
     private List<Other> others;
 
     @ManyToMany
+    @JoinTable(
+            name = "Rodent",
+            joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "id")})
     @Getter
     @Setter
     private List<Rodent> rodents;
+
+    @ManyToMany(mappedBy = "Vet")
+    private List<Vet> vets = new ArrayList<Vet>();
 
     public Vet(String name, String surname, double rating, String authorizationNumber) {
         this.name = name;

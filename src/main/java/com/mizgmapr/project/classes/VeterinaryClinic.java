@@ -39,9 +39,13 @@ public class VeterinaryClinic {
     private int ratingCounter;
 
     @ManyToMany
+    @JoinTable(
+            name = "Vet",
+            joinColumns = { @JoinColumn(name = "id") },
+            inverseJoinColumns = { @JoinColumn(name = "id")})
     @Getter
     @Setter
-    private List<Vet> vets;
+    private List<Vet> Vet;
 
     public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;

@@ -17,8 +17,6 @@ public class Main {
     public static void main(String[] args) {
         SpringApplication.run(Main.class, args);
         System.out.println("Hello");
-
-        line("DataBase - Creation");
         try (SessionFactory sessionFactory = new Configuration()
                 .addAnnotatedClass(Owner.class)
                 .addAnnotatedClass(CandidateOwner.class)
@@ -30,7 +28,7 @@ public class Main {
                 .addAnnotatedClass(Accomodation.class)
                 .addAnnotatedClass(CateringPlace.class)
                 .addAnnotatedClass(VeterinaryClinic.class)
-                .buildSessionFactory()) {
+                .buildSessionFactory()){
 
             line("Creation of Classes - Dog.class");
 
@@ -140,18 +138,49 @@ public class Main {
             firstVeterinaryClinic.ratingCalculator(3);firstVeterinaryClinic.ratingCalculator(6);
             firstVeterinaryClinic.ratingCalculator(5);firstVeterinaryClinic.ratingCalculator(6);
             firstVeterinaryClinic.ratingCalculator(3);firstVeterinaryClinic.ratingCalculator(6);
-            firstVeterinaryClinic.setVets(List.of(secondVet,thirdVet));
+            firstVeterinaryClinic.setVet(List.of(secondVet,thirdVet));
 
             VeterinaryClinic secondVeterinaryClinic = new VeterinaryClinic("AnimalCare", "ul.Staszica 56/4", "www.animalcare-staszica.com", "07:00", "19:00", 0.0, Set.of("Dog","Other"));
             secondVeterinaryClinic.ratingCalculator(2);secondVeterinaryClinic.ratingCalculator(6);
             secondVeterinaryClinic.ratingCalculator(3);secondVeterinaryClinic.ratingCalculator(4);
             secondVeterinaryClinic.ratingCalculator(3);secondVeterinaryClinic.ratingCalculator(5);
-            secondVeterinaryClinic.setVets(List.of(firstVet,thirdVet));
+            secondVeterinaryClinic.setVet(List.of(firstVet,thirdVet));
 
             line("Creation of Classes - Shelter");
 
-            Shelter randomShelter = new Shelter("Shelter", "ul.Akacjowa 4", "www.shelter.com", "07:00", "15:00", true);
-            Accomodation accomodation = new Accomodation("random accomodation", "Akacjowa 5", "www.randomAccomodation.com", "7", "15", 0.0, Set.of("Dog", "Cat"), true);
+            Shelter firstShelter = new Shelter("Azorek", "ul.Kwiatowa 14", "www.azorek.pl", "07:00", "15:00", true);
+            firstShelter.setDogs(List.of(firstDog, thirdDog, fourthDog, fifthDog, sixthDog, seventhDog, eigthDog));
+
+            Shelter secondShelter = new Shelter("KiciaPrzystań", "ul.Dębowa 31", "www.kicia-przystan.com.pl", "07:00", "18:00", false);
+            secondShelter.setCats(List.of(fourthCat, fifthCat, sixthCat, seventhCat, eigthCat, ninthCat));
+
+            Shelter thirdShelter = new Shelter("Sklep Zoologiczny", "ul. Morska 24", "www.sklepzoo.pl", "06:00", "16:00", false);
+            thirdShelter.setRodents(List.of(firstRodent, thirdRodent, fourthRodent, fifthRodent, sixthRodent, seventhRodent, eigthRodent, tenthRodent));
+            thirdShelter.setOthers(List.of(secondOther, thirdOther, fourthOther, fifthOther, seventhOther, eigthOther, ninthOther, tenthOther));
+
+            line("Creation of Classess - Accomodation");
+
+            Accomodation firstAccomodation = new Accomodation("Playfull-site", "ul. Ognista 2", "www.playfull-site.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat"), true);
+            firstAccomodation.ratingCalculator(3);firstAccomodation.ratingCalculator(2);
+            firstAccomodation.ratingCalculator(5);firstAccomodation.ratingCalculator(4);
+
+            Accomodation secondAccomodation = new Accomodation("Zoo-addicted", "ul. Kolejarzy 1", "www.zoo-addiction.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat", "Rodent", "Others"), true);
+            secondAccomodation.ratingCalculator(6);secondAccomodation.ratingCalculator(4);
+            secondAccomodation.ratingCalculator(5);secondAccomodation.ratingCalculator(6);
+
+            Accomodation thirdAccomodation = new Accomodation("OnlyDogs", "ul. Piaskowa 65/4", "www.dogz.com", "06:00", "22:00", 0.0, Set.of("Dog"), false);
+            thirdAccomodation.ratingCalculator(6);thirdAccomodation.ratingCalculator(6);
+            thirdAccomodation.ratingCalculator(5);thirdAccomodation.ratingCalculator(6);
+
+            line("Creation of Classess - Catering Place");
+
+            CateringPlace firstCateringPlace = new CateringPlace("Zoo-Delicious", "ul. Zwierzęca 1", "www.delicious.com.pl", "07:00", "20:00", 0.0, Set.of("Dog", "Cat"));
+            firstCateringPlace.ratingCalculator(1);firstCateringPlace.ratingCalculator(4);
+            firstCateringPlace.ratingCalculator(3);firstCateringPlace.ratingCalculator(6);
+
+            CateringPlace secondCateringPlace = new CateringPlace("Cat's Place", "ul. Żwirowa 33", "www.catzzz.com", "08:00", "15:00", 0.0, Set.of("Cat"));
+            secondCateringPlace.ratingCalculator(6);secondCateringPlace.ratingCalculator(2);
+            secondCateringPlace.ratingCalculator(5);secondCateringPlace.ratingCalculator(6);
 
             try (Session session = sessionFactory.openSession()) {
                 session.getTransaction().begin();
@@ -176,8 +205,11 @@ public class Main {
 
                 session.save(firstVeterinaryClinic);session.save(secondVeterinaryClinic);
 
-                session.save(randomShelter);
-                session.save(accomodation);
+                session.save(firstShelter);session.save(secondShelter);session.save(thirdShelter);
+
+                session.save(firstAccomodation);session.save(secondAccomodation);session.save(thirdAccomodation);
+
+                session.save(firstCateringPlace);session.save(secondCateringPlace);
 
                 session.getTransaction().commit();
             }
@@ -211,7 +243,6 @@ public class Main {
         }
         return Optional.empty();
     }
-
     public static void line(String s) {
         System.out.println("--------------------------------------------------------------------------------------------");
         System.out.println(s);
