@@ -30,7 +30,7 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int dog_id;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "treatmentRecords")
@@ -39,6 +39,8 @@ public class Dog {
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "weight")
     private double weight;
+
+    public Dog(){};
 
     public Dog(String name, String race, double weight, boolean aggressive, String color, String typeOfHair, boolean forAllergySufferers, boolean undercoat) {
         this.name = name;

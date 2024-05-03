@@ -14,6 +14,7 @@ public class Main {
         SpringApplication.run(Main.class, args);
         Database testDatabase = new Database();
         testDatabase.create();
+
     }
 
     public static Optional<String> readFile(String pathname) {
@@ -42,4 +43,5 @@ public class Main {
         }
         return Optional.empty();
     }
+
 }

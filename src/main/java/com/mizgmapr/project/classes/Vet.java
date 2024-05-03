@@ -66,6 +66,8 @@ public class Vet {
     @Setter
     private List<Rodent> rodents;
 
+    public Vet(){};
+
 
     public Vet(String name, String surname, double rating, String authorizationNumber) {
         this.name = name;

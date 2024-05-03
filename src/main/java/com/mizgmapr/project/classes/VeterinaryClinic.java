@@ -47,6 +47,8 @@ public class VeterinaryClinic {
     @Setter
     private List<Vet> vets;
 
+    public VeterinaryClinic(){};
+
     public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;
         this.address = address;

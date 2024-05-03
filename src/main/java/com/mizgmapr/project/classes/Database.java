@@ -281,6 +281,18 @@ public class Database {
                 session.getTransaction().commit();
             }
             line("DataBase creation over");
+
+            QueryManager.showAllDogs(sessionFactory);
+            QueryManager.showHeavyDogs(sessionFactory);
+            QueryManager.showLightDogs(sessionFactory);
+            QueryManager.showAllCats(sessionFactory);
+            QueryManager.showAllRodents(sessionFactory);
+            QueryManager.showAllOtherAnimals(sessionFactory);
+            QueryManager.showAllShelters(sessionFactory);
+            QueryManager.showAllVeterinaryClinic(sessionFactory);
+
+
+
         }
     }
 

@@ -16,7 +16,7 @@ public class CandidateOwner {
     double rating;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int candidateOwner_id;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "Name")
@@ -30,7 +30,12 @@ public class CandidateOwner {
     @Column(name = "Address")
     private String address;
 
-    @OneToMany
+    @ManyToMany
+    @JoinTable(
+            name = "Dogs",
+            joinColumns = { @JoinColumn(name = "candidateOwner_id") },
+            inverseJoinColumns = { @JoinColumn(name = "dog_id") }
+    )
     @Getter
     @Setter
     private List<Dog> dogs;

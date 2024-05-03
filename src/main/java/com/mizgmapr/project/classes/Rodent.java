@@ -36,6 +36,8 @@ public class Rodent {
     @Column(name = "weight")
     private double weight;
 
+    public Rodent() {};
+
     public Rodent(String name, String race, double weight, boolean aggressive, String color, String typeOfRodent) {
         this.name = name;
         this.race = race;

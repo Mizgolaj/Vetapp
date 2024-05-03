@@ -55,6 +55,8 @@ public class Shelter {
     @Setter
     private List<Rodent> rodents;
 
+    public Shelter() {};
+
     public Shelter(String name, String address, String website, String openHour, String closeHour, boolean walksAvaliable) {
         this.name = name;
         this.address = address;

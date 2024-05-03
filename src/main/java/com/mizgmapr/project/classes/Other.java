@@ -34,6 +34,8 @@ public class Other {
     @Column(name = "weight")
     private double weight;
 
+    public Other() {};
+
     public Other(String name, String race, double weight, boolean aggressive, String typeOfPet) {
         this.name = name;
         this.race = race;

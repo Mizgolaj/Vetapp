@@ -51,6 +51,9 @@ public class Owner {
     @Setter
     private List<Rodent> rodents;
 
+    public Owner(){}
+
+
     public Owner(String name, String surname, String address) {
         this.name = name;
         this.surname = surname;

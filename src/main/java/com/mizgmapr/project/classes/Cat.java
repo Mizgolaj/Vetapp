@@ -38,6 +38,8 @@ public class Cat {
     @Column(name = "weight")
     private double weight;
 
+    public Cat(){};
+
     public Cat(String name, String race, double weight, boolean aggressive, String color, boolean fur, boolean hypoallergenic) {
         this.name = name;
         this.race = race;
