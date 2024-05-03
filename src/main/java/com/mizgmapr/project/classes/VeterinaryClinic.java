@@ -2,6 +2,7 @@ package com.mizgmapr.project.classes;
 
 import lombok.*;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
@@ -38,14 +39,13 @@ public class VeterinaryClinic {
     private Set<String> petsOwners;
     private int ratingCounter;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Vet",
-            joinColumns = { @JoinColumn(name = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "id")})
+    @ManyToMany(targetEntity = Vet.class, cascade = { CascadeType.ALL })
+    @JoinTable(name = "Vet_VeterinaryClinic",
+            joinColumns = { @JoinColumn(name = "vet_id") },
+            inverseJoinColumns = { @JoinColumn(name = "id") })
     @Getter
     @Setter
-    private List<Vet> Vet;
+    private List<Vet> vets;
 
     public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;

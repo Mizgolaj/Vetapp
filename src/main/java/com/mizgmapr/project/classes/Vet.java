@@ -20,7 +20,7 @@ public class Vet {
     double rating;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int vet_id;
     @Getter
     @Setter
     @Column(name = "Name")
@@ -34,44 +34,38 @@ public class Vet {
     @Column(name = "AuthorizationNumber")
     private String authorizationNumber;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Dog",
+    @ManyToMany(targetEntity = Dog.class, cascade = { CascadeType.ALL })
+    @JoinTable(name = "Vet_Dog",
             joinColumns = { @JoinColumn(name = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "id")})
+            inverseJoinColumns = { @JoinColumn(name = "vet_id") })
     @Getter
     @Setter
     private List<Dog> dogs;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Cat",
+    @ManyToMany(targetEntity = Cat.class, cascade = { CascadeType.ALL })
+    @JoinTable(name = "Vet_Cat",
             joinColumns = { @JoinColumn(name = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "id")})
+            inverseJoinColumns = { @JoinColumn(name = "vet_id") })
     @Getter
     @Setter
     private List<Cat> cats;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Other",
+    @ManyToMany(targetEntity = Other.class, cascade = { CascadeType.ALL })
+    @JoinTable(name = "Vet_Other",
             joinColumns = { @JoinColumn(name = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "id")})
+            inverseJoinColumns = { @JoinColumn(name = "vet_id") })
     @Getter
     @Setter
     private List<Other> others;
 
-    @ManyToMany
-    @JoinTable(
-            name = "Rodent",
+    @ManyToMany(targetEntity = Rodent.class, cascade = { CascadeType.ALL })
+    @JoinTable(name = "Vet_Rodent",
             joinColumns = { @JoinColumn(name = "id") },
-            inverseJoinColumns = { @JoinColumn(name = "id")})
+            inverseJoinColumns = { @JoinColumn(name = "vet_id") })
     @Getter
     @Setter
     private List<Rodent> rodents;
 
-    @ManyToMany(mappedBy = "Vet")
-    private List<Vet> vets = new ArrayList<Vet>();
 
     public Vet(String name, String surname, double rating, String authorizationNumber) {
         this.name = name;
