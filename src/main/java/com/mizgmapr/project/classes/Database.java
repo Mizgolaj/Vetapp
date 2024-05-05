@@ -288,8 +288,11 @@ public class Database {
             QueryManager.showAllCats(sessionFactory);
             QueryManager.showAllRodents(sessionFactory);
             QueryManager.showAllOtherAnimals(sessionFactory);
-            QueryManager.showAllShelters(sessionFactory);
-            QueryManager.showAllVeterinaryClinic(sessionFactory);
+            QueryManager.showAllShelterNames(sessionFactory);
+            QueryManager.showAllVeterinaryClinicNames(sessionFactory);
+            QueryManager.showAggressiveDogs(sessionFactory);
+            QueryManager.showTypesOfOtherAnimals(sessionFactory);
+            QueryManager.showAllSheltersWithWalksAvaliable(sessionFactory);
 
 
 

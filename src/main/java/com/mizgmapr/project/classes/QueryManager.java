@@ -22,16 +22,37 @@ public class QueryManager {
         }
     }
 
+    public static void showAggressiveDogs(SessionFactory sessionFactory) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Dog> query = session.createQuery("SELECT name FROM Dog WHERE aggressive = true");
+            System.out.printf("Aggressive dogs registred in database: %s%n", query.list());
+        }
+    }
+
+    public static void showNonAggressiveDogs(SessionFactory sessionFactory) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Dog> query = session.createQuery("SELECT name FROM Dog WHERE aggressive = false");
+            System.out.printf("Not aggressive dogs registred in database: %s%n", query.list());
+        }
+    }
+
+    public static void showDogsForAllergySufferer(SessionFactory sessionFactory) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Dog> query = session.createQuery("SELECT name FROM Dog WHERE forAllergySufferers = true");
+            System.out.printf("Dogs for allergy sufferers registred in database: %s%n", query.list());
+        }
+    }
+
     public static void showHeavyDogs(SessionFactory sessionFactory) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Dog> query = session.createQuery("FROM Dog WHERE weight > 20", Dog.class);
+            Query<Dog> query = session.createQuery("SELECT name FROM Dog WHERE weight > 20");
             System.out.printf("Dogs with mass over 20 kilos: %s%n", query.list());
         }
     }
 
     public static void showLightDogs(SessionFactory sessionFactory) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Dog> query = session.createQuery("FROM Dog WHERE weight <= 20", Dog.class);
+            Query<Dog> query = session.createQuery("SELECT name FROM Dog WHERE weight <= 20");
             System.out.printf("Dogs with mass under 20 kilos: %s%n", query.list());
         }
     }
@@ -57,18 +78,36 @@ public class QueryManager {
         }
     }
 
-    public static void showAllShelters(SessionFactory sessionFactory) {
+    public static void showTypesOfOtherAnimals(SessionFactory sessionFactory) {
         try (Session session = sessionFactory.openSession()) {
-            Query<Shelter> query = session.createQuery("FROM Shelter", Shelter.class);
-            System.out.printf("All Shelters registred in database: %s%n", query.list());
+            Query<Other> query = session.createQuery("SELECT DISTINCT typeOfPet FROM Other");
+            System.out.printf("Type of pets registred in database: %s%n", query.list());
         }
     }
 
-
-    public static void showAllVeterinaryClinic(SessionFactory sessionFactory) {
+    public static void showAllShelterNames(SessionFactory sessionFactory) {
         try (Session session = sessionFactory.openSession()) {
-            Query<VeterinaryClinic> query = session.createQuery("FROM VeterinaryClinic", VeterinaryClinic.class);
-            System.out.printf("All Veterinary Clinics registred in database: %s%n", query.list());
+            Query<Shelter> query = session.createQuery("SELECT name FROM Shelter");
+            System.out.printf("All Shelter's names registred in database: %s%n", query.list());
+        }
+    }
+
+    public static void showAllSheltersWithWalksAvaliable(SessionFactory sessionFactory) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<Shelter> query = session.createQuery("SELECT s.name FROM Shelter s WHERE WalksAvaliable = true");
+            System.out.printf("All Shelter's with walks avaliable registred in database: %s%n", query.list());
+
+        }
+
+    }
+
+
+
+
+    public static void showAllVeterinaryClinicNames(SessionFactory sessionFactory) {
+        try (Session session = sessionFactory.openSession()) {
+            Query<VeterinaryClinic> query = session.createQuery("SELECT name FROM VeterinaryClinic");
+            System.out.printf("All Veterinary Clinic's names registred in database: %s%n", query.list());
         }
     }
 
