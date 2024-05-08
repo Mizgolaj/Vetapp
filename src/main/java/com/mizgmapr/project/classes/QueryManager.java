@@ -4,9 +4,6 @@ import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 public class QueryManager {
 
     private final SessionFactory sessionFactory;
@@ -100,8 +97,6 @@ public class QueryManager {
         }
 
     }
-
-
 
 
     public static void showAllVeterinaryClinicNames(SessionFactory sessionFactory) {
