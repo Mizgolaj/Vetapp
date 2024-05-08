@@ -8,15 +8,17 @@
 		<version>3.2.4</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.example</groupId>
-	<artifactId>demo</artifactId>
+	<groupId>com.mizgmapr.project.classes</groupId>
+	<artifactId>Main</artifactId>
+	<packaging>jar</packaging>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>demo</name>
+	<name>spring-boot</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
 		<sentry.version>7.3.0</sentry.version>
 		<vaadin.version>24.3.9</vaadin.version>
+		<start-class>com.mizgmapr.project.classes.Main</start-class>
 	</properties>
 	<dependencies>
 
@@ -42,9 +44,9 @@
 			<artifactId>spring-boot-starter-mail</artifactId>
 		</dependency>
 		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-			<version>8.0.28</version>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
+			<version>8.2.0</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -71,7 +73,7 @@
 			<groupId>com.vaadin</groupId>
 			<artifactId>vaadin-bom</artifactId>
 			<type>pom</type>
-			<scope>import</scope>
+			<scope>provided</scope>
 			<version>14.11.5</version>
 		</dependency>
 		<dependency>
@@ -104,6 +106,12 @@
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-test</artifactId>
+			<version>3.2.4</version>
+			<scope>test</scope>
+		</dependency>
 	</dependencies>
 	<dependencyManagement>
 		<dependencies>
@@ -132,6 +140,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>${project.parent.version}</version>
 				<configuration>
+					<executable>true</executable>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>

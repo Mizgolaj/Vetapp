@@ -2,19 +2,28 @@ package com.mizgmapr.project.classes;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.boot.context.event.ApplicationReadyEvent;
+import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.context.event.EventListener;
 
+import java.awt.*;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.Optional;
 
 @SpringBootApplication
 public class Main {
-
     public static void main(String[] args) {
-        SpringApplication.run(Main.class, args);
+        new SpringApplicationBuilder(Main.class).headless(false).run(args);
         Database testDatabase = new Database();
         testDatabase.create();
-
+    }
+    @EventListener(ApplicationReadyEvent.class)
+    public void openBrowserAfterStartup() throws IOException, URISyntaxException {
+        Desktop.getDesktop().browse(new URI("http://localhost:8080"));
     }
 
     public static Optional<String> readFile(String pathname) {
