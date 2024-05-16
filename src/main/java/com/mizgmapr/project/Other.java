@@ -1,4 +1,4 @@
-package com.mizgmapr.project.classes;
+package com.mizgmapr.project;
 
 import lombok.*;
 
@@ -10,21 +10,17 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "Cat")
-public class Cat {
+@Table(name = "Other")
+public class Other {
 
-    @Column(name = "hypoallergenic")
-    boolean hypoallergenic;
-    @Column(name = "aggressive")
-    boolean aggressive;
-    @Column(name = "fur")
-    boolean fur;
-    @Column(name = "color")
-    String color;
+    @Column(name = "typeOfPet")
+    String typeOfPet;
     @Column(name = "name")
     String name;
     @Column(name = "race")
     String race;
+    @Column(name = "aggresive")
+    boolean aggressive;
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,15 +34,13 @@ public class Cat {
     @Column(name = "weight")
     private double weight;
 
-    public Cat(){};
+    public Other() {};
 
-    public Cat(String name, String race, double weight, boolean aggressive, String color, boolean fur, boolean hypoallergenic) {
+    public Other(String name, String race, double weight, boolean aggressive, String typeOfPet) {
         this.name = name;
         this.race = race;
         this.weight = weight;
         this.aggressive = aggressive;
-        this.color = color;
-        this.fur = fur;
-        this.hypoallergenic = hypoallergenic;
+        this.typeOfPet = typeOfPet;
     }
 }

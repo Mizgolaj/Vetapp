@@ -18,7 +18,7 @@
 		<java.version>17</java.version>
 		<sentry.version>7.3.0</sentry.version>
 		<vaadin.version>24.3.9</vaadin.version>
-		<start-class>com.mizgmapr.project.classes.Main</start-class>
+		<start-class>com.mizgmapr.project.Main</start-class>
 	</properties>
 	<dependencies>
 
@@ -160,7 +160,7 @@
 					</descriptorRefs>
 					<archive>
 						<manifest>
-							<mainClass>com.mizgmapr.project.classes.com.mizgmapr.project.classes.Main</mainClass>
+							<mainClass>com.mizgmapr.project.classes.com.mizgmapr.project.Main</mainClass>
 						</manifest>
 					</archive>
 				</configuration>

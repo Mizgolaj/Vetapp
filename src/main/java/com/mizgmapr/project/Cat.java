@@ -1,4 +1,4 @@
-package com.mizgmapr.project.classes;
+package com.mizgmapr.project;
 
 import lombok.*;
 
@@ -10,17 +10,15 @@ import java.util.List;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "Dog")
-public class Dog {
+@Table(name = "Cat")
+public class Cat {
 
-    @Column(name = "forAllergySufferers")
-    boolean forAllergySufferers;
+    @Column(name = "hypoallergenic")
+    boolean hypoallergenic;
     @Column(name = "aggressive")
     boolean aggressive;
-    @Column(name = "undercoat")
-    boolean undercoat;
-    @Column(name = "typeOfHair")
-    String typeOfHair;
+    @Column(name = "fur")
+    boolean fur;
     @Column(name = "color")
     String color;
     @Column(name = "name")
@@ -30,7 +28,7 @@ public class Dog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int dog_id;
+    private int id;
     @Getter
     @Setter(AccessLevel.PROTECTED)
     @Column(name = "treatmentRecords")
@@ -40,16 +38,15 @@ public class Dog {
     @Column(name = "weight")
     private double weight;
 
-    public Dog(){};
+    public Cat(){};
 
-    public Dog(String name, String race, double weight, boolean aggressive, String color, String typeOfHair, boolean forAllergySufferers, boolean undercoat) {
+    public Cat(String name, String race, double weight, boolean aggressive, String color, boolean fur, boolean hypoallergenic) {
         this.name = name;
         this.race = race;
         this.weight = weight;
         this.aggressive = aggressive;
         this.color = color;
-        this.typeOfHair = typeOfHair;
-        this.forAllergySufferers = forAllergySufferers;
-        this.undercoat = undercoat;
+        this.fur = fur;
+        this.hypoallergenic = hypoallergenic;
     }
 }

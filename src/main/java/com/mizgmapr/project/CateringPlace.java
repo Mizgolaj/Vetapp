@@ -1,55 +1,47 @@
-package com.mizgmapr.project.classes;
+package com.mizgmapr.project;
 
-import lombok.*;
-
-import java.util.ArrayList;
-import java.util.List;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.ToString;
 import java.util.Set;
-
 import javax.persistence.*;
 
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "VeterinaryClinic")
-public class VeterinaryClinic {
+@Table(name = "CateringPlace")
+public class CateringPlace {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    private int id;
+    @Getter
+    private int ratingCounter;
     @Column(name = "name")
+    @Getter
     String name;
     @Column(name = "address")
+    @Getter
     String address;
     @Column(name = "website")
+    @Getter
     String website;
     @Column(name = "openHour")
+    @Getter
     String openHour;
     @Column(name = "closeHour")
+    @Getter
     String closeHour;
     @Column(name = "rating")
+    @Getter
     double rating;
     @Column(name = "acceptedPets")
     @ElementCollection(targetClass=String.class)
+    @Getter
     Set<String> acceptedPets;
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Getter
-    @Setter(AccessLevel.PROTECTED)
-    @Column(name = "petsOwners")
-    @ElementCollection(targetClass=String.class)
-    private Set<String> petsOwners;
-    private int ratingCounter;
 
-    @ManyToMany(targetEntity = Vet.class, cascade = { CascadeType.ALL })
-    @JoinTable(name = "Vet_VeterinaryClinic",
-            joinColumns = { @JoinColumn(name = "vet_id") },
-            inverseJoinColumns = { @JoinColumn(name = "id") })
-    @Getter
-    @Setter
-    private List<Vet> vets;
-
-    public VeterinaryClinic(){};
-
-    public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
+    public CateringPlace(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;
         this.address = address;
         this.website = website;

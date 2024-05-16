@@ -1,44 +1,58 @@
-package com.mizgmapr.project.classes;
+package com.mizgmapr.project;
 
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
 import lombok.ToString;
-import java.util.Set;
+
 import javax.persistence.*;
+import java.util.Set;
 
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "CateringPlace")
-public class CateringPlace {
+@Table(name = "Accomodation")
+public class Accomodation {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    private int ratingCounter;
     @Column(name = "name")
+    @Getter
     String name;
     @Column(name = "address")
+    @Getter
     String address;
     @Column(name = "website")
+    @Getter
     String website;
     @Column(name = "openHour")
+    @Getter
     String openHour;
     @Column(name = "closeHour")
+    @Getter
     String closeHour;
     @Column(name = "rating")
+    @Getter
     double rating;
     @Column(name = "acceptedPets")
     @ElementCollection(targetClass=String.class)
+    @Getter
     Set<String> acceptedPets;
+    @Column(name = "additionalFees")
+    @Getter
+    boolean additionalFees;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    private int id;
+    private int ratingCounter;
 
-    public CateringPlace(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
+    public Accomodation(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets, boolean additionalFees) {
         this.name = name;
         this.address = address;
         this.website = website;
         this.openHour = openHour;
         this.closeHour = closeHour;
-        this.rating = rating;
         this.acceptedPets = acceptedPets;
+        this.rating = rating;
+        this.additionalFees = additionalFees;
     }
 
     public void ratingCalculator(double grade) {
