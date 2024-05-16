@@ -16,13 +16,13 @@ import java.util.Optional;
 
 @SpringBootApplication
 public class Main {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         new SpringApplicationBuilder(Main.class).headless(false).run(args);
         Database testDatabase = new Database();
         testDatabase.create();
     }
     @EventListener(ApplicationReadyEvent.class)
-    public void openBrowserAfterStartup() throws IOException, URISyntaxException {
+    public static void openBrowserAfterStartup() throws IOException, URISyntaxException {
         Desktop.getDesktop().browse(new URI("http://localhost:8080"));
     }
 
