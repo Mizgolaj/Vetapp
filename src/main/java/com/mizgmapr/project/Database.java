@@ -1,5 +1,6 @@
 package com.mizgmapr.project;
 
+import com.mizgmapr.project.models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
@@ -171,6 +172,7 @@ public class Database {
             thirdShelter.setRodents(List.of(firstRodent, thirdRodent, fourthRodent, fifthRodent, sixthRodent, seventhRodent, eigthRodent, tenthRodent));
             thirdShelter.setOthers(List.of(secondOther, thirdOther, fourthOther, fifthOther, seventhOther, eigthOther, ninthOther, tenthOther));
 
+            /*
             line("Creation of Classess - Accomodation");
 
             Accomodation firstAccomodation = new Accomodation("Playfull-site", "ul. Ognista 2", "www.playfull-site.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat"), true);
@@ -191,6 +193,10 @@ public class Database {
             thirdAccomodation.ratingCalculator(5);
             thirdAccomodation.ratingCalculator(6);
 
+             */
+
+
+            /*
             line("Creation of Classess - Catering Place");
 
             CateringPlace firstCateringPlace = new CateringPlace("Zoo-Delicious", "ul. Zwierzęca 1", "www.delicious.com.pl", "07:00", "20:00", 0.0, Set.of("Dog", "Cat"));
@@ -204,6 +210,8 @@ public class Database {
             secondCateringPlace.ratingCalculator(2);
             secondCateringPlace.ratingCalculator(5);
             secondCateringPlace.ratingCalculator(6);
+
+             */
 
             try (Session session = sessionFactory.openSession()) {
                 session.getTransaction().begin();
@@ -271,12 +279,12 @@ public class Database {
                 session.save(secondShelter);
                 session.save(thirdShelter);
 
-                session.save(firstAccomodation);
-                session.save(secondAccomodation);
-                session.save(thirdAccomodation);
+               // session.save(firstAccomodation);
+               // session.save(secondAccomodation);
+               // session.save(thirdAccomodation);
 
-                session.save(firstCateringPlace);
-                session.save(secondCateringPlace);
+               // session.save(firstCateringPlace);
+               // session.save(secondCateringPlace);
 
                 session.getTransaction().commit();
             }

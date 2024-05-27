@@ -1,23 +1,18 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.models;
 
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
+
+import java.util.List;
 import java.util.Set;
+
 import javax.persistence.*;
 
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "CateringPlace")
-public class CateringPlace {
+@Table(name = "VeterinaryClinic")
+public class VeterinaryClinic {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Getter
-    private int id;
-    @Getter
-    private int ratingCounter;
     @Column(name = "name")
     @Getter
     String name;
@@ -40,8 +35,28 @@ public class CateringPlace {
     @ElementCollection(targetClass=String.class)
     @Getter
     Set<String> acceptedPets;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Getter
+    private int id;
+    @Getter
+    @Setter(AccessLevel.PROTECTED)
+    @Column(name = "petsOwners")
+    @ElementCollection(targetClass=String.class)
+    private Set<String> petsOwners;
+    @Getter
+    private int ratingCounter;
 
-    public CateringPlace(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
+    @ManyToMany(targetEntity = Vet.class, cascade = { CascadeType.ALL })
+    @JoinTable(name = "Vet_VeterinaryClinic",
+            joinColumns = { @JoinColumn(name = "vet_id") },
+            inverseJoinColumns = { @JoinColumn(name = "id") })
+    @Getter
+    @Setter
+    private List<Vet> vets;
+
+
+    public VeterinaryClinic(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets) {
         this.name = name;
         this.address = address;
         this.website = website;

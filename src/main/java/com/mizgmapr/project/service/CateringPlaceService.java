@@ -1,6 +1,6 @@
 package com.mizgmapr.project.service;
 
-import com.mizgmapr.project.CateringPlace;
+import com.mizgmapr.project.models.CateringPlace;
 import com.mizgmapr.project.repository.CateringPlaceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

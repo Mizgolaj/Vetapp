@@ -1,8 +1,6 @@
 package com.mizgmapr.project.repository;
 
-import com.mizgmapr.project.Accomodation;
-import com.mizgmapr.project.CateringPlace;
-import com.mizgmapr.project.VeterinaryClinic;
+import com.mizgmapr.project.models.CateringPlace;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;

@@ -1,6 +1,6 @@
 package com.mizgmapr.project.service;
 
-import com.mizgmapr.project.Accomodation;
+import com.mizgmapr.project.models.Accomodation;
 import com.mizgmapr.project.repository.AccomodationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

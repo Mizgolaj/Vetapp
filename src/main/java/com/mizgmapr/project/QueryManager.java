@@ -1,5 +1,6 @@
 package com.mizgmapr.project;
 
+import com.mizgmapr.project.models.*;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.query.Query;

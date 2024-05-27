@@ -1,5 +1,9 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.models;
 
+import com.mizgmapr.project.models.Cat;
+import com.mizgmapr.project.models.Dog;
+import com.mizgmapr.project.models.Other;
+import com.mizgmapr.project.models.Rodent;
 import lombok.*;
 
 import javax.persistence.*;

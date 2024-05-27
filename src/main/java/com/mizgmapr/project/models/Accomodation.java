@@ -1,4 +1,4 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.models;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -42,6 +42,7 @@ public class Accomodation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Getter
     private int id;
+    @Getter
     private int ratingCounter;
 
     public Accomodation(String name, String address, String website, String openHour, String closeHour, double rating, Set<String> acceptedPets, boolean additionalFees) {

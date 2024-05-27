@@ -1,4 +1,4 @@
-package com.mizgmapr.project;
+package com.mizgmapr.project.models;
 
 import lombok.*;
 

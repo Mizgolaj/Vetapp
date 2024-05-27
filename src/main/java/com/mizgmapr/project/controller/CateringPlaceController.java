@@ -1,9 +1,6 @@
 package com.mizgmapr.project.controller;
 
-import com.mizgmapr.project.Accomodation;
-import com.mizgmapr.project.Cat;
-import com.mizgmapr.project.CateringPlace;
-import com.mizgmapr.project.service.AccomodationService;
+import com.mizgmapr.project.models.CateringPlace;
 import com.mizgmapr.project.service.CateringPlaceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

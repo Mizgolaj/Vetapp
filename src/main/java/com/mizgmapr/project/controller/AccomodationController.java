@@ -1,6 +1,6 @@
 package com.mizgmapr.project.controller;
 
-import com.mizgmapr.project.Accomodation;
+import com.mizgmapr.project.models.Accomodation;
 import com.mizgmapr.project.service.AccomodationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +18,11 @@ import java.util.Optional;
 public class AccomodationController {
     @Autowired
     private AccomodationService accomodationService;
+
+    @Autowired
+    public AccomodationController(AccomodationService accomodationService) {
+        this.accomodationService = accomodationService;
+    }
 
     @GetMapping(produces = "application/json")
     public ResponseEntity<List<Accomodation>> findAll(){
