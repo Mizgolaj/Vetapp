@@ -4,6 +4,7 @@ import com.mizgmapr.project.models.Accomodation;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
+@Repository
 public class AccomodationRepository {
 
     private final List<Accomodation> accomodations;
@@ -29,19 +30,24 @@ public class AccomodationRepository {
                 .addAnnotatedClass(Accomodation.class)
                 .buildSessionFactory()) {
 
-            Accomodation firstAccomodation = new Accomodation("Playfull-site", "ul. Ognista 2", "www.playfull-site.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat"), true);
+            Accomodation firstAccomodation = new Accomodation("Playfull-site", "ul. Ognista 2",
+                    "www.playfull-site.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat"),
+                    true);
             firstAccomodation.ratingCalculator(3);
             firstAccomodation.ratingCalculator(2);
             firstAccomodation.ratingCalculator(5);
             firstAccomodation.ratingCalculator(4);
 
-            Accomodation secondAccomodation = new Accomodation("Zoo-addicted", "ul. Kolejarzy 1", "www.zoo-addiction.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat", "Rodent", "Others"), true);
+            Accomodation secondAccomodation = new Accomodation("Zoo-addicted", "ul. Kolejarzy 1",
+                    "www.zoo-addiction.com", "07:00", "22:00", 0.0, Set.of("Dog", "Cat", "Rodent", "Others"),
+                    true);
             secondAccomodation.ratingCalculator(6);
             secondAccomodation.ratingCalculator(4);
             secondAccomodation.ratingCalculator(5);
             secondAccomodation.ratingCalculator(6);
 
-            Accomodation thirdAccomodation = new Accomodation("OnlyDogs", "ul. Piaskowa 65/4", "www.dogz.com", "06:00", "22:00", 0.0, Set.of("Dog"), false);
+            Accomodation thirdAccomodation = new Accomodation("OnlyDogs", "ul. Piaskowa 65/4", "www.dogz.com",
+                    "06:00", "22:00", 0.0, Set.of("Dog"), false);
             thirdAccomodation.ratingCalculator(6);
             thirdAccomodation.ratingCalculator(6);
             thirdAccomodation.ratingCalculator(5);

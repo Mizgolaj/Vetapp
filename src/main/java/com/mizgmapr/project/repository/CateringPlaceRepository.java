@@ -4,6 +4,7 @@ import com.mizgmapr.project.models.CateringPlace;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.cfg.Configuration;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -12,7 +13,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-@Service
+@Repository
 public class CateringPlaceRepository {
 
     private final List<CateringPlace> cateringPlaces;
