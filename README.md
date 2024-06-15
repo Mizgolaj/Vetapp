@@ -1,6 +1,8 @@
 # Vetapp
 Vet application
+
 This application has been made to deliver structurized data for owners and potential owners of animals.
+
 It consist of three potential modules :
 
 1st module - household animals
@@ -19,7 +21,9 @@ Real-time feature with notifications if there will be shown any sign of potentia
 Scheduling appointments with VeterinaryClinic.
 Storing and using data for the need of trading farm animals or their products with other registered users.
 
-For the time being implementation consist only for the first module and database is examplory.
+
+**For the time being implementation consist only for the first module and database is examplory.**
+
 
 BEFORE USE
 
@@ -47,4 +51,3 @@ Planned future improvements - Tools side :
 - CLoud services
 - Advanced Cybersecurity
 - Automatic test implementation
-- 
